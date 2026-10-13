@@ -6,6 +6,19 @@
     <base href="/" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      // Apply the saved (or OS-preferred) theme before first paint to avoid a light flash.
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link
       href="//fonts.googleapis.com/css?family=Titillium+Web:700|Lora:400,400italic,700,700italic|Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic,700italic"

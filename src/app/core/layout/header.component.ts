@@ -3,6 +3,7 @@ import { UserService } from '../auth/services/user.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { DefaultImagePipe } from '../../shared/pipes/default-image.pipe';
+import { ThemeService } from '../theme/theme.service';
 
 @Component({
   selector: 'app-layout-header',
@@ -14,4 +15,5 @@ export class HeaderComponent {
   private userService = inject(UserService);
   currentUser$ = this.userService.currentUser;
   authState$ = this.userService.authState;
+  theme = inject(ThemeService);
 }

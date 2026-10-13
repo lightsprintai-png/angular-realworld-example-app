@@ -1,0 +1,213 @@
+/*
+ * App-level styles layered on top of the shared RealWorld theme
+ * (realworld/assets/theme/styles.css, a submodule we don't edit).
+ */
+
+/* ============================================================================
+ * THEME TOGGLE
+ * ============================================================================ */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 99em;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+
+.theme-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Applied briefly by ThemeService so the switch is instant rather than a staggered fade */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+}
+
+/* ============================================================================
+ * DARK THEME
+ * Set by ThemeService (and the inline script in index.html) as
+ * <html data-theme="dark">.
+ * ============================================================================ */
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --brand: #3dbb4f;
+  --brand-hover: #4fcc61;
+  --brand-active: #2b8e3a;
+  --brand-dark: #7dd88b;
+
+  --danger: #e07a7a;
+
+  --secondary: #7a8087;
+  --secondary-hover: #8d939a;
+  --secondary-border: #8d939a;
+
+  --text: #e1e4e8;
+  --text-muted: #9aa0a6;
+  --text-light: #80868b;
+  --text-lighter: #9aa0a6;
+  --text-disabled: #6b7177;
+
+  --border: #2f3338;
+  --bg-light: #23272b;
+
+  /* Dark-only tokens used by the overrides below */
+  --bg: #16181b;
+  --surface: #1e2124;
+  --surface-raised: #26292d;
+  --heading: #f1f3f5;
+}
+
+html[data-theme='dark'] body,
+html[data-theme='dark'] footer,
+html[data-theme='dark'] .banner,
+html[data-theme='dark'] .profile-page .user-info {
+  background-color: var(--bg);
+}
+
+html[data-theme='dark'] hr,
+html[data-theme='dark'] footer,
+html[data-theme='dark'] .banner,
+html[data-theme='dark'] .article-preview,
+html[data-theme='dark'] .home-page .sidebar,
+html[data-theme='dark'] .profile-page .user-info,
+html[data-theme='dark'] .card,
+html[data-theme='dark'] .card-footer,
+html[data-theme='dark'] .article-page .card,
+html[data-theme='dark'] .article-page .card .card-footer {
+  border-color: var(--border);
+}
+
+/* The Conduit logo SVG has a hard-coded #222 fill */
+html[data-theme='dark'] .navbar-logo,
+html[data-theme='dark'] .banner-logo,
+html[data-theme='dark'] .footer-logo {
+  filter: invert(1);
+}
+
+/* Headings and dark text */
+html[data-theme='dark'] .navbar-brand,
+html[data-theme='dark'] .navbar-light .navbar-brand,
+html[data-theme='dark'] footer .logo-font,
+html[data-theme='dark'] footer a,
+html[data-theme='dark'] .tag-default,
+html[data-theme='dark'] .article-page .banner h1,
+html[data-theme='dark'] .page-item.active .page-link {
+  color: var(--heading);
+}
+
+html[data-theme='dark'] .article-page .card .mod-options {
+  color: var(--text);
+}
+
+/* Navbar */
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link:focus,
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link.active,
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link.active:focus,
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link.active:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Feed tabs */
+html[data-theme='dark'] .nav-pills.outline-active .nav-link:hover {
+  color: var(--text);
+}
+
+html[data-theme='dark'] .nav-pills.outline-active .nav-link.active {
+  background: transparent;
+}
+
+/* Forms */
+html[data-theme='dark'] .form-control {
+  color: var(--text);
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+html[data-theme='dark'] .form-control:focus {
+  border-color: var(--input-focus);
+}
+
+html[data-theme='dark'] .form-control:disabled,
+html[data-theme='dark'] .form-control[readonly] {
+  background-color: var(--surface-raised);
+}
+
+/* Cards (comments) */
+html[data-theme='dark'] .card {
+  background-color: var(--surface);
+  box-shadow: none;
+}
+
+html[data-theme='dark'] .card-footer {
+  background-color: var(--surface-raised);
+}
+
+/* Article list */
+html[data-theme='dark'] .article-preview:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Tags */
+html[data-theme='dark'] .tag-default {
+  border-color: var(--border);
+}
+
+html[data-theme='dark'] .tag-default:hover,
+html[data-theme='dark'] .tag-default[href]:focus,
+html[data-theme='dark'] .tag-default[href]:hover {
+  background-color: var(--surface-raised);
+}
+
+html[data-theme='dark'] .tag-default.tag-outline {
+  color: var(--text-lighter);
+  background: none;
+}
+
+/* Pagination */
+html[data-theme='dark'] .page-link,
+html[data-theme='dark'] .page-item.disabled .page-link {
+  background-color: var(--surface);
+}
+
+html[data-theme='dark'] .page-link:focus,
+html[data-theme='dark'] .page-link:hover {
+  background-color: var(--surface-raised);
+}
+
+html[data-theme='dark'] .page-item.active .page-link,
+html[data-theme='dark'] .page-item.active .page-link:focus,
+html[data-theme='dark'] .page-item.active .page-link:hover {
+  background-color: var(--surface-raised);
+  border-color: var(--border);
+}

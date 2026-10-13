@@ -93,5 +93,16 @@
         </ul>
       }
     }
+
+    <button
+      type="button"
+      class="theme-toggle"
+      data-testid="theme-toggle"
+      (click)="theme.toggle()"
+      [attr.aria-label]="theme.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+      [attr.title]="theme.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+    >
+      <i [class]="theme.theme() === 'dark' ? 'ion-ios-sunny' : 'ion-ios-moon'"></i>
+    </button>
   </div>
 </nav>
